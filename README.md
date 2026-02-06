@@ -10,9 +10,9 @@ Real-time data capture and fleet management system for Quest VR headsets. Handle
 flowchart TB
     subgraph clients["Client Devices"]
         direction LR
-        quest["🥽 Quest VR Headsets"]
-        tablet["📱 Tablet Controller"]
-        dashboard["🖥️ Dashboard Web UI"]
+        quest["Quest VR Headsets"]
+        tablet["Tablet Controller"]
+        dashboard["Dashboard Web UI"]
     end
 
     subgraph internet["Public Internet"]
@@ -168,8 +168,7 @@ cd capture-backend
 npm install
 
 # Configure
-cp .env.example .env
-# Edit .env with your AWS keys and JWT secret
+# Create .env file with required environment variables (see below)
 
 # Build
 npm run build
@@ -255,18 +254,16 @@ capture-backend/
 │   └── s3-stats.ts         # S3 statistics API
 ├── grafana/
 │   └── dashboards/         # Grafana dashboard JSON
-├── nginx/
-│   └── nginx.conf.template # Nginx config template
+├── prometheus/
+│   └── prometheus.yml      # Prometheus config
 ├── scripts/
-│   ├── parse_npz.py        # NPZ parsing utility
-│   └── generate-nginx-config.sh
+│   └── parse_npz.py        # NPZ parsing utility
 ├── docs/
 │   ├── API.md              # API documentation
 │   ├── SETUP.md            # Setup guide
 │   └── SCHEMA.md           # Data schemas
 ├── package.json
-├── tsconfig.json
-└── .env.example
+└── tsconfig.json
 ```
 
 ---
@@ -297,8 +294,8 @@ npm install
 npm run build
 
 # 4. Configure environment
-cp .env.example .env
 nano .env
+# Add required environment variables
 
 # 5. Start with PM2
 pm2 start app.js --name capture-backend
@@ -312,9 +309,8 @@ pm2 startup
 # Install nginx
 sudo apt install nginx
 
-# Copy config
-sudo cp nginx/nginx.conf.template /etc/nginx/sites-available/default
-# Edit with your domain
+# Configure reverse proxy to port 3200
+# Add server block with proxy_pass to localhost:3200
 
 # Get SSL certificate
 sudo apt install certbot python3-certbot-nginx
