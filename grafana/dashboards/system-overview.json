@@ -40,7 +40,7 @@
       "id": 1,
       "targets": [
         {
-          "expr": "turing_devices_connected_total",
+          "expr": "turing_connected_devices_total",
           "legendFormat": "{{device_type}}"
         }
       ],
@@ -82,7 +82,7 @@
       "id": 2,
       "targets": [
         {
-          "expr": "turing_devices_recording_total",
+          "expr": "turing_recording_devices_total",
           "legendFormat": "Recording"
         }
       ],
@@ -251,7 +251,7 @@
       "id": 8,
       "targets": [
         {
-          "expr": "turing_device_battery_level",
+          "expr": "turing_fleet_battery_level",
           "legendFormat": "{{device_id}}"
         }
       ],

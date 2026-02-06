@@ -72,12 +72,12 @@ sequenceDiagram
     S-->>H: on-session-created
 
     T->>S: tablet-lock-device (headsetId)
-    S-->>T: lock-success
-    S-->>H: on-locked
+    S-->>T: on-device-locked
 
-    T->>S: tablet-start-recording
+    T->>S: tablet-start-recording (headsetId)
     S-->>H: start-recording
     H-->>S: headset-recording-state (started)
+    S-->>T: on-recording-started
 
     loop Every Frame (30fps)
         H->>S: headset-frame (video data)
@@ -124,8 +124,8 @@ flowchart LR
     client -->|"HTTPS/WSS"| nginx
     nginx -->|"HTTP/WS"| backend
     nginx -->|"/grafana/"| graf
-    backend -->|"/metrics"| prom
-    prom -->|"data source"| graf
+    prom -->|"scrapes /metrics"| backend
+    graf -->|"queries"| prom
     backend -->|"S3 API"| s3
 ```
 
@@ -250,11 +250,9 @@ capture-backend/
 │   ├── metrics.ts          # Prometheus metrics
 │   ├── rateLimiter.ts      # Rate limiting
 │   ├── validation.ts       # Input validation (Zod)
-│   ├── redis.ts            # Redis for scaling
 │   ├── logger.ts           # Pino logging
 │   ├── qa-metrics.ts       # QA metrics API
-│   ├── s3-stats.ts         # S3 statistics API
-│   └── multidevice_complete.ts  # Multi-device logic
+│   └── s3-stats.ts         # S3 statistics API
 ├── grafana/
 │   └── dashboards/         # Grafana dashboard JSON
 ├── nginx/
