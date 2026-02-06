@@ -243,21 +243,19 @@ See [docs/API.md](docs/API.md) for complete API documentation.
 
 ```
 capture-backend/
-├── src/
-│   ├── app.ts              # Main server (Express + Socket.IO)
-│   ├── auth.ts             # JWT authentication
-│   ├── metrics.ts          # Prometheus metrics
-│   ├── rateLimiter.ts      # Rate limiting
-│   ├── validation.ts       # Input validation (Zod)
-│   ├── logger.ts           # Pino logging
-│   ├── qa-metrics.ts       # QA metrics API
-│   └── s3-stats.ts         # S3 statistics API
-├── grafana/
-│   └── dashboards/         # Grafana dashboard JSON
-├── prometheus/
-│   └── prometheus.yml      # Prometheus config
-├── scripts/
-│   └── parse_npz.py        # NPZ parsing utility
+├── app.ts                  # Main server (Express + Socket.IO)
+├── auth.ts                 # JWT authentication
+├── logger.ts               # Pino logging
+├── metrics.ts              # Prometheus metrics
+├── multidevice_complete.ts # Multi-device session management
+├── qa-metrics.ts           # QA metrics API
+├── rateLimiter.ts          # Rate limiting
+├── redis.ts                # Redis client and Socket.IO adapter
+├── s3-stats.ts             # S3 statistics API
+├── validation.ts           # Input validation (Joi)
+├── parse_npz.py            # NPZ parsing utility
+├── devices.json            # Device registry
+├── telemetry_history.json  # Telemetry cache
 ├── docs/
 │   ├── API.md              # API documentation
 │   ├── SETUP.md            # Setup guide
@@ -325,14 +323,6 @@ See [docs/SETUP.md](docs/SETUP.md) for detailed deployment instructions.
 ---
 
 ## Monitoring
-
-### Grafana Dashboards
-
-Three pre-built dashboards in `grafana/dashboards/`:
-
-1. **System Overview** - Device connections, session activity, system health
-2. **S3 Analytics** - Storage usage, upload stats, cost tracking
-3. **QA Monitoring** - Capture quality metrics, validation results
 
 ### Prometheus Metrics
 
