@@ -1,0 +1,203 @@
+# ======================
+# Node.js / TypeScript Backend .gitignore
+# ======================
+
+# -----------------------
+# Dependencies
+# -----------------------
+node_modules/
+.pnp/
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# -----------------------
+# Environment Variables
+# -----------------------
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.*.local
+# Keep .env.example as a template
+
+# -----------------------
+# Build Artifacts / Compiled Output
+# -----------------------
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+
+# Compiled JavaScript from TypeScript (if source is .ts)
+# Uncomment if you want to ignore all compiled JS:
+# *.js
+# !*.config.js
+
+# TypeScript cache
+*.tsbuildinfo
+.tscache/
+
+# -----------------------
+# Logs
+# -----------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+pino-*.log
+
+# PM2 logs and state
+.pm2/
+ecosystem.config.js.bak
+pm2-*.log
+
+# -----------------------
+# IDE / Editor Files
+# -----------------------
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# JetBrains IDEs
+*.iml
+.idea/
+
+# -----------------------
+# OS Files
+# -----------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# -----------------------
+# Sensitive Files / Secrets
+# -----------------------
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+credentials.json
+credentials/
+secrets/
+*.secret
+.secrets
+service-account*.json
+gcp-*.json
+firebase-*.json
+private-key*.json
+
+# AWS
+.aws/
+aws-credentials.json
+
+# -----------------------
+# Temporary Files
+# -----------------------
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+.cache/
+.turbo/
+
+# -----------------------
+# Testing
+# -----------------------
+coverage/
+.nyc_output/
+*.lcov
+.jest/
+jest-results/
+test-results/
+junit.xml
+
+# -----------------------
+# Docker
+# -----------------------
+.docker/
+docker-compose.override.yml
+*.tar
+
+# -----------------------
+# Debugging
+# -----------------------
+.debug/
+*.heapsnapshot
+*.cpuprofile
+
+# -----------------------
+# Miscellaneous
+# -----------------------
+.eslintcache
+.stylelintcache
+.prettiercache
+*.pid
+*.seed
+*.pid.lock
+.node_repl_history
+.npm/
+.yarn-integrity
+
+# Parcel / Bundlers
+.parcel-cache/
+.fusebox/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# -----------------------
+# Claude Flow / AI Tools
+# -----------------------
+.claude-flow/
+.claude/
+.hive-mind/
+.swarm/
+.mcp.json
+
+# -----------------------
+# DO NOT IGNORE (keep these)
+# -----------------------
+# package-lock.json - SHOULD be committed
+# tsconfig.json - SHOULD be committed
+# *.config.js - Configuration files SHOULD be committed
+# Grafana JSON exports - SHOULD be committed if needed
