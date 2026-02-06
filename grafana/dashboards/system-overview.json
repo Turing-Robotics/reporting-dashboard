@@ -281,7 +281,7 @@
       "id": 9,
       "targets": [
         {
-          "expr": "rate(turing_uploads_bytes_total[1m]) / 1024 / 1024",
+          "expr": "rate(turing_upload_bytes_total[1m]) / 1024 / 1024",
           "legendFormat": "Upload MB/s"
         }
       ],
@@ -309,11 +309,11 @@
       "id": 10,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, rate(turing_http_request_duration_ms_bucket[5m]))",
+          "expr": "histogram_quantile(0.95, rate(turing_http_request_duration_seconds_bucket[5m]))",
           "legendFormat": "p95"
         },
         {
-          "expr": "histogram_quantile(0.99, rate(turing_http_request_duration_ms_bucket[5m]))",
+          "expr": "histogram_quantile(0.99, rate(turing_http_request_duration_seconds_bucket[5m]))",
           "legendFormat": "p99"
         }
       ],
