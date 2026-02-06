@@ -206,36 +206,27 @@ Compile TypeScript to JavaScript:
 npm run build
 ```
 
-This runs `tsc` and generates `.js` files in the same directory as the `.ts` files.
+This runs `tsc` and generates `.js` files in the root directory alongside the `.ts` files (flat structure matching production).
 
 ### Build Output
 
-After building, you will have:
+After building, you will have compiled `.js` files alongside the `.ts` source files:
 ```
 capture-backend/
-  src/
-    app.ts          # Source
-    app.js          # Compiled output
-    auth.ts
-    auth.js
-    logger.ts
-    logger.js
-    metrics.ts
-    metrics.js
-    rateLimiter.ts
-    rateLimiter.js
-    qa-metrics.ts
-    qa-metrics.js
-    s3-stats.ts
-    s3-stats.js
-    validation.ts
-    validation.js
-  scripts/
-    parse_npz.py    # Python NPZ parser for QA metrics
-  grafana/
-    dashboards/     # Grafana dashboard JSON files
-  prometheus/
-    prometheus.yml  # Prometheus scrape config
+  app.ts / app.js                       # Main server
+  auth.ts / auth.js                     # JWT authentication
+  logger.ts / logger.js                 # Pino logging
+  metrics.ts / metrics.js               # Prometheus metrics
+  multidevice_complete.ts / .js         # Multi-device management
+  qa-metrics.ts / qa-metrics.js         # QA metrics API
+  rateLimiter.ts / rateLimiter.js       # Rate limiting
+  redis.ts / redis.js                   # Redis client and adapter
+  s3-stats.ts / s3-stats.js             # S3 statistics API
+  validation.ts / validation.js         # Input validation
+  parse_npz.py                          # Python NPZ parser
+  devices.json                          # Device registry
+  telemetry_history.json                # Telemetry cache
+  docs/                                 # Documentation
   package.json
   tsconfig.json
 ```
