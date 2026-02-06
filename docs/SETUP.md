@@ -212,20 +212,32 @@ This runs `tsc` and generates `.js` files in the same directory as the `.ts` fil
 
 After building, you will have:
 ```
-quest_backend/
-  app.ts          # Source
-  app.js          # Compiled output (run this)
-  auth.ts
-  auth.js
-  logger.ts
-  logger.js
-  metrics.ts
-  metrics.js
-  rateLimiter.ts
-  rateLimiter.js
-  validation.ts
-  validation.js
-  ...
+capture-backend/
+  src/
+    app.ts          # Source
+    app.js          # Compiled output
+    auth.ts
+    auth.js
+    logger.ts
+    logger.js
+    metrics.ts
+    metrics.js
+    rateLimiter.ts
+    rateLimiter.js
+    qa-metrics.ts
+    qa-metrics.js
+    s3-stats.ts
+    s3-stats.js
+    validation.ts
+    validation.js
+  scripts/
+    parse_npz.py    # Python NPZ parser for QA metrics
+  grafana/
+    dashboards/     # Grafana dashboard JSON files
+  prometheus/
+    prometheus.yml  # Prometheus scrape config
+  package.json
+  tsconfig.json
 ```
 
 ### TypeScript Configuration
