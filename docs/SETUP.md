@@ -853,7 +853,6 @@ ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
 The server uses in-memory state. On restart, all sessions and device states are lost. This is by design for simplicity.
 
 For persistent state, consider adding:
-- Redis for session storage
 - PostgreSQL for device registry
 
 ### Checking Server Health

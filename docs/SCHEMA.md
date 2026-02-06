@@ -20,10 +20,9 @@ This document describes all data structures, interfaces, and schemas used by the
    - [File Formats](#file-formats)
    - [Naming Conventions](#naming-conventions)
 4. [NPZ File Structure](#npz-file-structure)
-5. [Redis Data Structures](#redis-data-structures)
-6. [REST API Payloads](#rest-api-payloads)
-7. [Validation Schemas](#validation-schemas)
-8. [QA Metrics Structure](#qa-metrics-structure)
+5. [REST API Payloads](#rest-api-payloads)
+6. [Validation Schemas](#validation-schemas)
+7. [QA Metrics Structure](#qa-metrics-structure)
 
 ---
 
@@ -584,60 +583,6 @@ print(f"Capture Date: {metadata['capture_date']}")
 
 ---
 
-## Redis Data Structures
-
-### RedisDeviceState
-
-```typescript
-interface RedisDeviceState {
-    deviceId: string;
-    socketId: string;
-    isOnline: boolean;          // Stored as "1" or "0"
-    lastSeen: string;           // ISO 8601 timestamp
-    connectionTime: string;     // ISO 8601 timestamp
-    lockedByTabletId?: string;
-    lockedAt?: string;          // ISO 8601 timestamp
-}
-```
-
-**Redis Key**: `device:{deviceId}`
-**Type**: Hash
-**TTL**: 24 hours
-
-### RedisSessionState
-
-```typescript
-interface RedisSessionState {
-    sessionId: string;
-    tabletId: string;
-    deviceIds: string[];        // Stored as JSON array
-    status: 'pending' | 'recording' | 'paused' | 'completed' | 'uploading';
-    createdAt: string;          // ISO 8601 timestamp
-    startedAt?: string;
-    endedAt?: string;
-    metadata?: string;          // JSON-encoded
-}
-```
-
-**Redis Key**: `session:{sessionId}`
-**Type**: Hash
-**TTL**: 7 days
-
-### Device Locks
-
-| Key Pattern | Type | TTL | Description |
-|-------------|------|-----|-------------|
-| `lock:{deviceId}` | String | 2 hours | Tablet socket ID holding lock |
-| `tablet_locks:{tabletId}` | Set | none | Device IDs locked by tablet |
-
-### Telemetry Cache
-
-**Redis Key**: `telemetry:{deviceId}`
-**Type**: String (JSON)
-**TTL**: 5 minutes
-
----
-
 ## REST API Payloads
 
 ### Device Token Request
@@ -948,12 +893,6 @@ const MAX_FRAME_BATCH_SIZE = 5;                // Prevent memory growth
 const SESSION_CLEANUP_INTERVAL_MS = 60 * 60 * 1000;      // Hourly
 const SESSION_EXPIRY_MS = 24 * 60 * 60 * 1000;           // 24 hours
 const OFFLINE_DEVICE_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-
-// Redis TTLs
-const DEVICE_STATE_TTL = 3600 * 24;            // 24 hours
-const LOCK_TTL = 7200;                         // 2 hours
-const SESSION_TTL = 3600 * 24 * 7;             // 7 days
-const TELEMETRY_TTL = 300;                     // 5 minutes
 ```
 
 ---
@@ -962,4 +901,3 @@ const TELEMETRY_TTL = 300;                     // 5 minutes
 
 - **Last Updated**: 2026-02-06
 - **Backend Version**: 2.3
-- **Source**: `/Users/pavly/Downloads/Aria/Server/backup_20260206/quest_backend/`
