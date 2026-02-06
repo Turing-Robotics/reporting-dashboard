@@ -1,0 +1,346 @@
+{
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 3
+              }
+            ]
+          },
+          "unit": "none"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "targets": [
+        {
+          "expr": "turing_devices_connected_total",
+          "legendFormat": "{{device_type}}"
+        }
+      ],
+      "title": "Connected Devices",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        }
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 2,
+      "targets": [
+        {
+          "expr": "turing_devices_recording_total",
+          "legendFormat": "Recording"
+        }
+      ],
+      "title": "Recording Status",
+      "type": "stat"
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "targets": [
+        {
+          "expr": "rate(turing_process_cpu_seconds_total[1m]) * 100",
+          "legendFormat": "CPU %"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": "CPU Usage",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 4,
+      "targets": [
+        {
+          "expr": "turing_process_resident_memory_bytes / 1024 / 1024",
+          "legendFormat": "RSS (MB)"
+        },
+        {
+          "expr": "turing_process_heap_bytes / 1024 / 1024",
+          "legendFormat": "Heap (MB)"
+        }
+      ],
+      "title": "Memory Usage",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "decmbytes",
+          "label": "Memory",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 5,
+      "targets": [
+        {
+          "expr": "rate(turing_socket_events_total[1m])",
+          "legendFormat": "{{event_type}}"
+        }
+      ],
+      "title": "Socket.IO Events/sec",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Events/sec",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 6,
+      "targets": [
+        {
+          "expr": "rate(turing_uploads_completed_total[5m])",
+          "legendFormat": "Completed/min"
+        },
+        {
+          "expr": "rate(turing_uploads_failed_total[5m])",
+          "legendFormat": "Failed/min"
+        }
+      ],
+      "title": "Upload Statistics",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Uploads",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 7,
+      "targets": [
+        {
+          "expr": "turing_nodejs_eventloop_lag_seconds * 1000",
+          "legendFormat": "Current Lag (ms)"
+        },
+        {
+          "expr": "turing_nodejs_eventloop_lag_mean_seconds * 1000",
+          "legendFormat": "Mean Lag (ms)"
+        }
+      ],
+      "title": "Event Loop Lag",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": "Lag",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 8,
+      "targets": [
+        {
+          "expr": "turing_device_battery_level",
+          "legendFormat": "{{device_id}}"
+        }
+      ],
+      "title": "Device Battery Levels",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": "Battery %",
+          "max": 100,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 9,
+      "targets": [
+        {
+          "expr": "rate(turing_uploads_bytes_total[1m]) / 1024 / 1024",
+          "legendFormat": "Upload MB/s"
+        }
+      ],
+      "title": "Data Transfer Rate",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "MBs",
+          "label": "Transfer Rate",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 10,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(turing_http_request_duration_ms_bucket[5m]))",
+          "legendFormat": "p95"
+        },
+        {
+          "expr": "histogram_quantile(0.99, rate(turing_http_request_duration_ms_bucket[5m]))",
+          "legendFormat": "p99"
+        }
+      ],
+      "title": "HTTP Response Times",
+      "type": "graph",
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": "Response Time",
+          "show": true
+        },
+        {
+          "format": "short",
+          "show": false
+        }
+      ]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [
+    "turing",
+    "vr",
+    "quest3"
+  ],
+  "timezone": "browser",
+  "title": "Turing VR - System Overview",
+  "uid": "7f591652-6a3c-4a48-8fd7-ada356ce0d87",
+  "version": 1
+}
