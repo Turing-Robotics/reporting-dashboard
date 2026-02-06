@@ -679,7 +679,7 @@ interface ChunkedUploadStartResponse {
 - ISO 8601: `YYYY-MM-DD...` format
 
 ### File Size Limits
-- Max file size: 100GB
+- Max file size: 20GB
 - Max chunk count: 10,000
 - Chunk size: 10MB
 - Frame data: Max 1MB per frame

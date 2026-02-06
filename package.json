@@ -1,11 +1,11 @@
 {
   "name": "turing-backend",
   "version": "0.0.0",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "build": "tsc",
-    "start": "node app.js",
-    "dev": "tsc && node app.js"
+    "start": "node src/app.js",
+    "dev": "tsc && node src/app.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.948.0",
