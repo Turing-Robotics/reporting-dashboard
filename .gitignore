@@ -200,4 +200,3 @@ docker-compose.override.yml
 # package-lock.json - SHOULD be committed
 # tsconfig.json - SHOULD be committed
 # *.config.js - Configuration files SHOULD be committed
-# Grafana JSON exports - SHOULD be committed if needed
